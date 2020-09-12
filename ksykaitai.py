@@ -7,7 +7,7 @@ import kaitaiStructCompile.backend.cmdline as clibackend
 
 def compile(ksypath):
     backend = clibackend.init(ICompilerModule,
-                              kaitaiStructCompile.KaitaiCompilerException,
+                              kaitaiStructCompile.KaitaiCompilerException.KaitaiCompilerException,
                               kaitaiStructCompile.utils,
                               kaitaiStructCompile.defaults)
 
