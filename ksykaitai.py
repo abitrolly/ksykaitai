@@ -30,5 +30,5 @@ def compile(ksypath):
     #kaitaiStructCompile.compile(ksypath, dirname, backend=backend)
 
 
-Superblock = compile('../kaitai_struct_visualizer/squashfs_superblock.ksy')
+Superblock = compile('data/squashfs_superblock.ksy')
 print(dir(Superblock))
