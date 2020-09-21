@@ -30,5 +30,9 @@ def compile(ksypath):
     #kaitaiStructCompile.compile(ksypath, dirname, backend=backend)
 
 
-Superblock = compile('data/squashfs_superblock.ksy')
-print(dir(Superblock))
+module = compile('data/squashfs_superblock.ksy')
+print(dir(module))
+Squashfs = module.SquashfsSuperblock.from_file('data/yakshaveinc_eternal_amd64.snap')
+print(dir(Squashfs))
+print(dir(Squashfs.superblock))
+print(f'inodes: {Squashfs.superblock.inode_count}')
