@@ -1,9 +1,1 @@
-__pycache__
-*.pyc
-*.pyo
-/kaitaiStructCompile.egg-info
-/build
-/dist
-/.eggs
-/tests/output
-/tests/formats
+kaitai-struct-compiler
