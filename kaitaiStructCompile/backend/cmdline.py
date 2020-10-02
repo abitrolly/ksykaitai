@@ -108,7 +108,7 @@ def init(ICompilerModule, KaitaiCompilerException, utils, defaults):
 
 		def __repr__(self):
 			#return self.__class__.__name__+"<"+repr(self._stor)+">"
-			return self.__class__.__name__ + "<" + " ".join(self()) + ">"
+			return self.__class__.__name__ + '("' + " ".join(self()) + '")'
 
 		def __call__(self):
 			params = []
