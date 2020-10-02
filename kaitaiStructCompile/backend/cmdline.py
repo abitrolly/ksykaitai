@@ -145,7 +145,8 @@ def init(ICompilerModule, KaitaiCompilerException, utils, defaults):
 
 		def compile__(self, sourceFilesAbsPaths: typing.Iterable[Path], destDir: Path, additionalFlags: typing.Iterable[str], verbose, opaqueTypes, autoRead: bool, readStoresPos: bool, target: str = "python", needInMemory: bool = False, **kwargs) -> typing.Mapping[str, ICompilerModule.ICompileResult]:
 			"""Compiles KS package with kaitai-struct-compiler"""
-			print("commonFlags", self.commonFlags)
+			print("[DEBUG] commonFlags:", self.commonFlags)
+			print("[DEBUG] compiler:", self.compilerExecutable)
 			params = [str(self.compilerExecutable)]
 
 			params += (self.commonFlags + CLIPrefsStorage(destDir=destDir, additionalFlags=additionalFlags, verbose=verbose, opaqueTypes=opaqueTypes, autoRead=autoRead, readStoresPos=readStoresPos, target=target))()
