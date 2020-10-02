@@ -152,6 +152,7 @@ def init(ICompilerModule, KaitaiCompilerException, utils, defaults):
 			params += (self.commonFlags + CLIPrefsStorage(destDir=destDir, additionalFlags=additionalFlags, verbose=verbose, opaqueTypes=opaqueTypes, autoRead=autoRead, readStoresPos=readStoresPos, target=target))()
 
 			params.extend((str(p) for p in sourceFilesAbsPaths))
+			print("[DEBUG] params:", params)
 
 			with subprocess.Popen(params, stdout=subprocess.PIPE, stderr=subprocess.STDOUT) as proc:
 				with io.TextIOWrapper(proc.stdout) as stdoutPipe:

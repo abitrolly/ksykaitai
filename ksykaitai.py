@@ -1,5 +1,6 @@
 
 import importlib.util
+import os
 import tempfile
 
 import kaitaiStructCompile
@@ -22,7 +23,8 @@ def compile(ksypath):
                               kaitaiStructCompile.defaults)
 
     with tempfile.TemporaryDirectory() as dirname:
-        kaitaiStructCompile.compile(ksypath, dirname, backend=backend)
+        os.environ['JAVA_HOME'] = 'kaitai-struct-compiler/jre'
+        kaitaiStructCompile.compile(ksypath, dirname, backend=backend, additionalFlags=['-no-version-check'])
         pyfile = f'{dirname}/squashfs_superblock.py'
         return importbypath(pyfile)
 
