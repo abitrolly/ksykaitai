@@ -98,7 +98,17 @@ class ICompiler:
 			raise KaitaiCompilerException("Source file " + str(sourceFilePath) + " doesn't exist")
 		return sourceFilePath
 
-	def compile(self, sourceFilesPaths: typing.Iterable[Path], destDir: Path, additionalFlags: typing.Iterable[str] = None, needInMemory: bool = False, target: str = "python", verbose: typing.Optional[typing.Iterable[str]] = None, opaqueTypes: typing.Optional[bool] = None, autoRead: typing.Optional[bool] = None, readStoresPos: typing.Optional[bool] = None) -> typing.Mapping[str, ICompileResult]:
+	def compile(self,
+                sourceFilesPaths: typing.Iterable[Path],
+                destDir: Path,
+                additionalFlags: typing.Iterable[str] = None,
+                needInMemory: bool = False,
+                target: str = "python",
+                verbose: typing.Optional[typing.Iterable[str]] = None,
+                opaqueTypes: typing.Optional[bool] = None,
+                autoRead: typing.Optional[bool] = None,
+                readStoresPos: typing.Optional[bool] = None) -> typing.Mapping[str, ICompileResult]:
+
 		if destDir is not None:
 			destDir = Path(destDir).absolute()
 		else:
