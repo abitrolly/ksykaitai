@@ -1,7 +1,14 @@
-This tool automates compilation of [Kaitai Struct](https://github.com/kaitai-io/kaitai_struct) ```*.ksy``` and loading them into Python.
+This tool automates compilation of [Kaitai Struct](https://github.com/kaitai-io/kaitai_struct)
+parsers from  `*.ksy` files and importing them in Python.
 
 ### WORK IN PROGRESS (doesn't work as shown below) and grossly insecure (don't use for public service)
 
+Prepare by downloading compiler binary and Java JRE (Linux only for now)
+```
+./prepare.sh
+```
+
+Create a script that imports `ksykaitai.py` in a current dir.
 ```
 import ksykaitai
 Gif = ksykaitai.compile('git.ksy')
@@ -10,6 +17,8 @@ g = Gif.from_file('some.gif')
 
 Roadmap
 -------
+* [x] commit all source dependencies to repo
+* [x] download compiler with binary dependencies (Java JRE)
 * [ ] pack [Kaitai Struct compiler](https://github.com/kaitai-io/kaitai_struct_compiler) into a wheel
   * [ ] use https://github.com/dgiagio/warp to pack the compiler as a single binary together with headless Java `JRE`
 * [ ] figure out the binary path after the wheel installation
