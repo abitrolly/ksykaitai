@@ -23,6 +23,7 @@ Roadmap
   * [ ] use https://github.com/dgiagio/warp to pack the compiler as a single binary together with headless Java `JRE`
 * [ ] figure out the binary path after the wheel installation
 * [ ] wrap the code below
+* [ ] add to https://github.com/kaitai-io/awesome-kaitai
 
 Importing a ksy
 
