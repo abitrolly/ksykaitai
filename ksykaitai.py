@@ -9,7 +9,7 @@ import kaitaiStructCompile.ICompiler as ICompilerModule
 import kaitaiStructCompile.backend.cmdline as clibackend
 
 
-def importbypath(pypath, modname=None):
+def import_by_path(pypath, modname=None):
     """ Returns imported module object """
     if not modname:
         modname = os.path.splitext(os.path.basename(pypath))[0]
@@ -28,8 +28,11 @@ def compile(ksypath):
     with tempfile.TemporaryDirectory() as dirname:
         os.environ['JAVA_HOME'] = 'kaitai-struct-compiler/jre'
         kaitaiStructCompile.compile(ksypath, dirname, backend=backend, additionalFlags=['-no-version-check'])
-        pyfile = f'{dirname}/squashfs_superblock.py'
-        module = importbypath(pyfile)
+        # module name will be name of .ksy file without extension
+        modname = os.path.splitext(os.path.basename(ksypath))[0]
+        # name of generated python file, maybe kaitaiStructCompile provides it
+        pyfile = f'{dirname}/{modname}.py'
+        module = import_by_path(pyfile, modname)
 
     return module
 
