@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 
 import importlib.util
 import os
@@ -9,6 +10,7 @@ import kaitaiStructCompile.backend.cmdline as clibackend
 
 
 def importbypath(pypath, modname=None):
+    """ Returns imported module object """
     if not modname:
         modname = os.path.splitext(pypath)[0]
     spec = importlib.util.spec_from_file_location(modname, pypath)
@@ -27,10 +29,9 @@ def compile(ksypath):
         os.environ['JAVA_HOME'] = 'kaitai-struct-compiler/jre'
         kaitaiStructCompile.compile(ksypath, dirname, backend=backend, additionalFlags=['-no-version-check'])
         pyfile = f'{dirname}/squashfs_superblock.py'
-        return importbypath(pyfile)
+        module = importbypath(pyfile)
 
-    #dirname = tempfile.mkdtemp()
-    #kaitaiStructCompile.compile(ksypath, dirname, backend=backend)
+    return module
 
 
 module = compile('data/squashfs_superblock.ksy')
