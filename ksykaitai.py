@@ -12,7 +12,7 @@ import kaitaiStructCompile.backend.cmdline as clibackend
 def importbypath(pypath, modname=None):
     """ Returns imported module object """
     if not modname:
-        modname = os.path.splitext(pypath)[0]
+        modname = os.path.splitext(os.path.basename(pypath))[0]
     spec = importlib.util.spec_from_file_location(modname, pypath)
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
