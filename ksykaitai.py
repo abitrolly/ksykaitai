@@ -8,8 +8,9 @@ import kaitaiStructCompile.ICompiler as ICompilerModule
 import kaitaiStructCompile.backend.cmdline as clibackend
 
 
-def importbypath(pypath):
-    modname = 'squashfs_superblock'
+def importbypath(pypath, modname=None):
+    if not modname:
+        modname = os.path.splitext(pypath)[0]
     spec = importlib.util.spec_from_file_location(modname, pypath)
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
