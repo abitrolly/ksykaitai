@@ -19,7 +19,8 @@ def import_by_path(pypath, modname=None):
     return mod
 
 
-def compile(ksypath):
+def compile(ksypath, debug=False):
+    """ If `debug` is True, preserve compiled file in `/tmp/ksycompiled.py` """
     backend = clibackend.init(ICompilerModule,
                               kaitaiStructCompile.KaitaiCompilerException.KaitaiCompilerException,
                               kaitaiStructCompile.utils,
@@ -33,11 +34,15 @@ def compile(ksypath):
         # name of generated python file, maybe kaitaiStructCompile provides it
         pyfile = f'{dirname}/{modname}.py'
         module = import_by_path(pyfile, modname)
+        if debug:
+            import shutil
+            shutil.copyfile(pyfile, '/tmp/ksycompiled.py')
+            print('DEBUG: created /tmp/ksycompiled.py')
 
     return module
 
 
-module = compile('data/squashfs_superblock.ksy')
+module = compile('data/squashfs_superblock.ksy', True)
 print(dir(module))
 Squashfs = module.SquashfsSuperblock.from_file('data/yakshaveinc_eternal_amd64.snap')
 print(dir(Squashfs))
