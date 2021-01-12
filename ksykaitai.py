@@ -20,7 +20,9 @@ def import_by_path(pypath, modname=None):
 
 
 def compile(ksypath, debug=False):
-    """ If `debug` is True, preserve compiled file in `/tmp/ksycompiled.py` """
+    """ Returns parser, subclass of KaitaiStruct.
+        If `debug` is True, preserve compiled file in `/tmp/ksycompiled.py`
+    """
     backend = clibackend.init(ICompilerModule,
                               kaitaiStructCompile.KaitaiCompilerException.KaitaiCompilerException,
                               kaitaiStructCompile.utils,
@@ -39,12 +41,16 @@ def compile(ksypath, debug=False):
             shutil.copyfile(pyfile, '/tmp/ksycompiled.py')
             print('DEBUG: created /tmp/ksycompiled.py')
 
-    return module
+    import inspect
+    classes = [m[1] for m in inspect.getmembers(module, inspect.isclass)]
+    ksyclass = [c for c in classes if c.__module__ == modname][0]
+
+    return ksyclass
 
 
-module = compile('data/squashfs_superblock.ksy', True)
-print(dir(module))
-Squashfs = module.SquashfsSuperblock.from_file('data/yakshaveinc_eternal_amd64.snap')
-print(dir(Squashfs))
-print(dir(Squashfs.superblock))
-print(f'inodes: {Squashfs.superblock.inode_count}')
+if __name__ == '__main__':
+    Squashfs = compile('data/squashfs_superblock.ksy', True)
+    sfs = Squashfs.from_file('data/yakshaveinc_eternal_amd64.snap')
+    #print(dir(sfs))
+    #print(dir(sfs.superblock))
+    print(f'inodes: {sfs.superblock.inode_count}')
