@@ -18,3 +18,6 @@ mv jdk-11.0.8+10-jre "$COMPILER_PATH/jre"
 
 echo "Refreshing Python lib with imports..."
 wget -N https://raw.githubusercontent.com/kaitai-io/kaitai_struct_python_runtime/master/kaitaistruct.py
+
+echo "Converting $COMPILER_PATH into Python package"
+touch "$COMPILER_PATH"/__init__.py

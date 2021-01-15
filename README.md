@@ -19,7 +19,7 @@ Roadmap
 -------
 * [x] commit all source dependencies to repo
 * [x] download compiler with binary dependencies (Java JRE)
-* [ ] pack [Kaitai Struct compiler](https://github.com/kaitai-io/kaitai_struct_compiler) into a wheel
+* [x] pack [Kaitai Struct compiler](https://github.com/kaitai-io/kaitai_struct_compiler) into a wheel
   * [ ] use https://github.com/dgiagio/warp to pack the compiler as a single binary together with headless Java `JRE`
 * [ ] figure out the binary path after the wheel installation
 * [ ] wrap the code below

@@ -1,5 +1,7 @@
 include UNLICENSE
 include *.md
-include tests
 include .editorconfig
 global-include *.json
+
+recursive-include tests *
+recursive-include kaitai-struct-compiler *
