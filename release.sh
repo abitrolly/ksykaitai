@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -e
+set -x
+
 #pip wheel .
 
 #pip install build
@@ -16,7 +19,7 @@ python -m build
 # get the latest built wheel
 # https://stackoverflow.com/questions/5885934/bash-function-to-find-newest-file-matching-pattern
 unset -v latest
-for file in *.whl; do
+for file in dist/*.whl; do
   [[ $file -nt $latest ]] && latest=$file
 done
 
