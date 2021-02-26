@@ -60,8 +60,8 @@ def compile(ksypath, debug=False):
 
 
 if __name__ == '__main__':
-    Squashfs = compile('data/squashfs_superblock.ksy', True)
-    sfs = Squashfs.from_file('data/yakshaveinc_eternal_amd64.snap')
+    Squashfs = compile('tests/data/squashfs.ksy', True)
+    sfs = Squashfs.from_file('tests/data/snap.squashfs')
     #print(dir(sfs))
     #print(dir(sfs.superblock))
     print(f'inodes: {sfs.superblock.inode_count}')
