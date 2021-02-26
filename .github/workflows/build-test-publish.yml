@@ -17,10 +17,13 @@ jobs:
         pip install build
         ./prepare.sh
         ./release.sh
+
     - uses: actions/upload-artifact@v2
       with:
         name: wheel
-        path: dist/*.whl
+        path: |
+          dist/*.whl
+          tests/*
 
   test:
     needs: build
@@ -33,6 +36,7 @@ jobs:
       run: |
         ls -la
         pip install dist/*.whl
+        pytest tests/
 
   publish:
     if: false
