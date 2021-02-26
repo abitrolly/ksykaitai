@@ -36,7 +36,8 @@ jobs:
       run: |
         ls -la
         pip install dist/*.whl
-        pytest tests/
+        python -m ksykaitai
+        python -m pytest tests/
 
   publish:
     if: false
