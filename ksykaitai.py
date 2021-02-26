@@ -11,7 +11,7 @@ import kaitaiStructCompile.backend.cmdline as clibackend
 
 def patch_compiler_location():
     """ ksykaitai ships compiler in a wheel """
-    if not os.environ['KAITAI_STRUCT_ROOT']:
+    if not os.environ.get('KAITAI_STRUCT_ROOT'):
         DIR = os.path.abspath(os.path.dirname(__file__))
         COMPILER = DIR + '/kaitai-struct-compiler'
         if os.path.exists(COMPILER):
