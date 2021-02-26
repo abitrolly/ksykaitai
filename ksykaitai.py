@@ -9,6 +9,15 @@ import kaitaiStructCompile.ICompiler as ICompilerModule
 import kaitaiStructCompile.backend.cmdline as clibackend
 
 
+def patch_compiler_location():
+    """ ksykaitai ships compiler in a wheel """
+    if not os.environ['KAITAI_STRUCT_ROOT']:
+        DIR = os.path.abspath(os.path.dirname(__file__))
+        COMPILER = DIR + '/kaitai-struct-compiler'
+        if os.path.exists(COMPILER):
+            os.environ['KAITAI_STRUCT_ROOT'] = COMPILER
+
+
 def import_by_path(pypath, modname=None):
     """ Returns imported module object """
     if not modname:
@@ -23,6 +32,8 @@ def compile(ksypath, debug=False):
     """ Returns parser, subclass of KaitaiStruct.
         If `debug` is True, preserve compiled file in `/tmp/ksycompiled.py`
     """
+    patch_compiler_location()
+
     backend = clibackend.init(ICompilerModule,
                               kaitaiStructCompile.KaitaiCompilerException.KaitaiCompilerException,
                               kaitaiStructCompile.utils,
