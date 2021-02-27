@@ -50,7 +50,7 @@ def compile(ksypath, debug=False):
         files = os.listdir(dirname)
         if len(files) > 1:
             print('ERROR: Oops! Too many files generated %s' % files)
-        pyfile = files[0]
+        pyfile = os.path.abspath(os.path.join(dirname, files[0]))
         # module name will be name of .py file without extension
         modname = os.path.splitext(os.path.basename(pyfile))[0]
         # module name doesn't matter, but Python needs it for module index
