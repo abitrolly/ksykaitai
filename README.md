@@ -1,7 +1,7 @@
 This tool automates compilation of [Kaitai Struct](https://github.com/kaitai-io/kaitai_struct)
 parsers from  `*.ksy` files and importing them in Python.
 
-### WORK IN PROGRESS (doesn't work as shown below) and grossly insecure (don't use for public service)
+### WORK IN PROGRESS (doesn't work as shown below) and not secure for a public web service
 
 Prepare by downloading compiler binary and Java JRE (Linux only for now)
 ```
