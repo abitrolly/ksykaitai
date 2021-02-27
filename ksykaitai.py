@@ -41,11 +41,19 @@ def compile(ksypath, debug=False):
 
     with tempfile.TemporaryDirectory() as dirname:
         os.environ['JAVA_HOME'] = 'kaitai-struct-compiler/jre'
-        kaitaiStructCompile.compile(ksypath, dirname, backend=backend, additionalFlags=['-no-version-check'])
-        # module name will be name of .ksy file without extension
-        modname = os.path.splitext(os.path.basename(ksypath))[0]
-        # name of generated python file, maybe kaitaiStructCompile provides it
-        pyfile = f'{dirname}/{modname}.py'
+        kaitaiStructCompile.compile(
+                ksypath,
+                dirname,
+                backend=backend,
+                additionalFlags=['-no-version-check'])
+        # scan for generated .py file, it is simpler than analysing kaitaiStructCompile result
+        files = os.listdir(dirname)
+        if len(files) > 1:
+            print('ERROR: Oops! Too many files generated %s' % files)
+        pyfile = files[0]
+        # module name will be name of .py file without extension
+        modname = os.path.splitext(os.path.basename(pyfile))[0]
+        # module name doesn't matter, but Python needs it for module index
         module = import_by_path(pyfile, modname)
         if debug:
             import shutil
