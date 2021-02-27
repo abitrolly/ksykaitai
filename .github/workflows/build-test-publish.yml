@@ -40,7 +40,7 @@ jobs:
     - name: Test
       run: |
         python -m ksykaitai
-        python -m pytest tests/
+        python tests/test.py
 
   publish:
     if: false
