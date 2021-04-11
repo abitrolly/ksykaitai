@@ -5,3 +5,4 @@ global-include *.json
 
 recursive-include tests *
 recursive-include kaitai-struct-compiler *
+recursive-include kaitaiStructCompile *
