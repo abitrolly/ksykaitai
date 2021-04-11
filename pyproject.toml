@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=44", "wheel", "setuptools_scm[toml]>=3.4.3"]
+requires = ["setuptools>=46.4.0", "wheel"]
 build-backend = "setuptools.build_meta"
 # setuptools     ^^^ uses setup.cfg for configuration
 # https://github.com/pypa/setuptools/issues/1688

@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+__version__ = '0.9k1'  # 0.9 is the Kaitai Compiler, 1 is ksykaitai
+
 import importlib.util
 import os
 import tempfile
