@@ -11,7 +11,7 @@ g = Gif.from_file('some.gif')
 [`Kaitai Struct Compiler`](https://github.com/kaitai-io/kaitai_struct_compiler)
 that follows the "best data science practices" of packing huge runtime
 binaries into, well, binary wheels. And because the compiler needs JRE,
-the project packs the compiler together with JRE into the wheel.
+the project packs the JRE into the wheel as well.
 
 
 ### Credits and copyright
