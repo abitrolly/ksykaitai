@@ -42,12 +42,12 @@ jobs:
         python -m ksykaitai
         python tests/test.py
         echo "--- ${{ github.ref }} + ${{ github.event.base_ref }}"
-        echo "--- ${{ startsWith(github.ref, 'refs/tags/') && github.event.base_ref == 'ref/heads/ksykaitai' }}"
+        echo "--- ${{ startsWith(github.ref, 'refs/tags/') && github.event.base_ref == 'refs/heads/ksykaitai' }}"
 
   publish:
     # publish only on tags to `ksykaitai` branch (default), for details see
     # https://github.com/yakshaveinc/linux/pull/44#issuecomment-817077246
-    if: ${{ startsWith(github.ref, 'refs/tags/') && github.event.base_ref == 'ref/heads/ksykaitai' }}
+    if: ${{ startsWith(github.ref, 'refs/tags/') && github.event.base_ref == 'refs/heads/ksykaitai' }}
 
     needs: test
     runs-on: ubuntu-latest
