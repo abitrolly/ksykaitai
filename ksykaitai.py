@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 
-__version__ = '0.9k1'  # 0.9 is the Kaitai Compiler, 1 is ksykaitai
+# in version like 0.9k1 - 0.9 is the version of Kaitai Compiler
+# and 1 is the version of this lib
+
+__version__ = '0.9k0'
 
 import importlib.util
 import os
