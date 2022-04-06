@@ -9,7 +9,7 @@ COMPILER_PATH="kaitai-struct-compiler"
 echo "Cleaning up $COMPILER_PATH/..."
 rm -rf "$COMPILER_PATH"
 echo "Dowloading compiler..."
-wget -q --continue https://dl.bintray.com/kaitai-io/universal/$COMPILER/kaitai-struct-compiler-$COMPILER.zip
+wget --no-verbose --continue https://github.com/kaitai-io/kaitai_struct_compiler/releases/download/0.9/kaitai-struct-compiler-0.9.zip
 unzip kaitai-struct-compiler-$COMPILER.zip
 #rm kaitai-struct-compiler-$COMPILER.zip
 mv kaitai-struct-compiler-$COMPILER "$COMPILER_PATH"
