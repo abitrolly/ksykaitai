@@ -1,15 +1,16 @@
-This tool automates compilation of [Kaitai Struct](https://github.com/kaitai-io/kaitai_struct)
+The library that automates compilation of [Kaitai Struct](https://github.com/kaitai-io/kaitai_struct)
 parsers from  `*.ksy` files and importing them in Python.
 
 ```python
 import ksykaitai
+
 Gif = ksykaitai.compile('gif.ksy')
 g = Gif.from_file('some.gif')
 ```
 
-`ksykaitai` is a command line wrapper for
+`ksykaitai` module calls command line
 [`Kaitai Struct Compiler`](https://github.com/kaitai-io/kaitai_struct_compiler)
-that follows the "best data science practices" of packing huge runtime
+and follows the "best data science practices" of packing huge runtime
 binaries into, well, binary wheels. And because the compiler needs JRE,
 the project packs the JRE into the wheel as well.
 
@@ -17,12 +18,13 @@ the project packs the JRE into the wheel as well.
 ### Credits and copyright
 
 The awesome production of genius engineering effort builds upon the CLI
-interface work by @KOLANICH, who will most likely give a lot of curses
+interface [work by KOLANICH](https://github.com/kaitaiStructCompile/kaitaiStructCompile.py),
+who will most likely give a lot of curses
 towards these 50Mb of monstrousity after dealing with bits and bytes in
 the neat way that `kaitai.io` provides. Despite of that, he is really
 quick and helpful with issues on the way. Please give him a hug. :D
 
-While the code of `ksykaitai` and underlying CLI interface is free of
+While the code of `ksykaitai` and underlying KOLANICH lib is free of
 copyright, the Kaitai Compiler itself is not. That probably doesn't
 affect the generated code, but you may want to open an issue in Kaitai
 project to be 100% sure.
@@ -36,9 +38,11 @@ and `1` is the version of the `ksykaitai` itself.
 
 ### Releasing
 
-Releasing is based on `git tag`. The version is extracted from it by
-`setuptools_vcs` to build the wheel and upload it to PyPI. Uploading is
-(meant to be) done by CI automatically. That's a three step process.
+Releasing was supposed to be based on `git tag`. The version had to be
+extracted from it by `setuptools_vcs` to build the wheel and upload it to
+PyPI. But I found [no way to detect tag push](https://github.com/yakshaveinc/linux/pull/44)
+in GitHub Actions. Uploading is (meant to be) done by CI automatically,
+but for now that's a three step manual action.
 
    1. run `./prepare.sh` to download the compiler and Java JRE
    2. run `./release.sh` to create the wheel named from latest tag
